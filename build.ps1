@@ -75,7 +75,10 @@ Remove-Item .\DVD\sources\old-boot.wim -Force
 
 if (Test-Path .\EI.CFG) {
     Write-Host "Adding patch to bypass default windows edition and product key request..."
-    Remove-Item Win11 -Recurse -Force
+    if (Test-Path .\DVD\sources\EI.CFG) {
+        Remove-Item .\DVD\sources\EI.CFG -Force
+    }
+    Copy-Item .\EI.CFG .\DVD\sources\EI.CFG -Force
 }
 
 Write-Host "Creating ISO..."

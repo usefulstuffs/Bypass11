@@ -62,16 +62,7 @@ If (Test-Path .\Win11\sources\install.wim) {
         Remove-Item .\DVD\sources\install.wim -Force
     }
     Copy-Item .\Win11\sources\install.wim .\DVD\sources\install.wim -Force
-    Write-Host "Compressing install.wim..."
-    Rename-Item -Path ".\DVD\sources\install.wim" -NewName "old-install.wim" -Force
-    Export-WindowsImage -SourceImagePath .\DVD\sources\old-install.wim -SourceIndex 1 -DestinationImagePath .\DVD\sources\install.wim -CompressionType max
-    Remove-Item .\DVD\sources\old-install.wim -Force
 }
-
-Write-Host "Compressing boot.wim..."
-Rename-Item -Path ".\DVD\sources\boot.wim" -NewName "old-boot.wim" -Force
-Export-WindowsImage -SourceImagePath .\DVD\sources\old-boot.wim -SourceIndex 1 -DestinationImagePath .\DVD\sources\boot.wim -CompressionType max
-Remove-Item .\DVD\sources\old-boot.wim -Force
 
 if (Test-Path .\EI.CFG) {
     Write-Host "Adding patch to bypass default windows edition and product key request..."

@@ -23,7 +23,7 @@ if (!(Test-Path "Win10.iso")) {
 }
 if (!(Test-Path "Win11.iso")) {
     Write-Host "Windows 11 ISO not found. Downloading one..."
-    .\aria2\aria2c.exe "https://archive.org/download/win-10-full-collection/windows 10 ISOs/Win11_22H2_English_x64.iso" -o "Win11.iso" -x16 -s16
+    .\aria2\aria2c.exe "https://archive.org/download/windows-11-23h2-english-x-64_202312/Win11_23H2_English_x64.iso" -o "Win11.iso" -x16 -s16
 }
 
 $currentDate = Get-Date -Format "yy-MM-dd"

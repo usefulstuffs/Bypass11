@@ -73,6 +73,11 @@ Rename-Item -Path ".\DVD\sources\boot.wim" -NewName "old-boot.wim" -Force
 Export-WindowsImage -SourceImagePath .\DVD\sources\old-boot.wim -SourceIndex 1 -DestinationImagePath .\DVD\sources\boot.wim -CompressionType max
 Remove-Item .\DVD\sources\old-boot.wim -Force
 
+if (Test-Path .\EI.CFG) {
+    Write-Host "Adding patch to bypass default windows edition and product key request..."
+    Remove-Item Win11 -Recurse -Force
+}
+
 Write-Host "Creating ISO..."
 
 $isoName = "Bypass11_build_$currentDate.iso"
